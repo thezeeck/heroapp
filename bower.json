@@ -1,0 +1,19 @@
+{
+  "name": "angular",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Juan Sanchez"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
