@@ -3,7 +3,9 @@
 $(function () {
 
   var app = {
-    "api": {}
+    "api": {
+      pubKey: "e5e525c75274a0cd954ec98993d606c2"
+    }
   };
 
   // function browserDetect() {
@@ -25,14 +27,13 @@ $(function () {
     var filter = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
     var order = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "-modified";
 
-    var pubKey = "e5e525c75274a0cd954ec98993d606c2",
-        limitAjax = "&limit=" + limit,
+    var limitAjax = "&limit=" + limit,
         url = "https://gateway.marvel.com:443/v1/public/",
         orderAjax = "?orderBy=" + order,
         urlAjax = url + section + orderAjax + limitAjax;
 
     $.getJSON(urlAjax, {
-      apikey: pubKey
+      apikey: app.api.pubKey
     }).done(function (data) {
       console.log(data.data.results);
       app.renderGrid(data.data.results, node);
@@ -45,10 +46,13 @@ $(function () {
     var template = "";
     for (var i = 0; i < arrayContent.length; i++) {
       if (arrayContent[i].thumbnail.path.indexOf("image_not_available") < 0) {
-        template += "<li ui-url=\"" + arrayContent[i].resourceURI + "\">\n                    <img src=\"" + arrayContent[i].thumbnail.path + "." + arrayContent[i].thumbnail.extension + "\">\n                    <h3>" + arrayContent[i].name + "</h3>\n                    </li>";
+        template += "<li><a href=\"" + (arrayContent[i].resourceURI + app.api.pubKey) + "\">\n                    <img src=\"" + arrayContent[i].thumbnail.path + "." + arrayContent[i].thumbnail.extension + "\">\n                    <h3>" + arrayContent[i].name + "</h3>\n                    </a></li>";
       }
     }
     $(node).append(template);
+    $(node + " li").on("click", function (e) {
+      console.log(e.currentTarget);
+    });
   };
 
   app.callApi("characters", "#gridHome");

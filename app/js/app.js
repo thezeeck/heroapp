@@ -1,7 +1,9 @@
 $(()=> {
 
   var app = {
-    "api": {},
+    "api": {
+      pubKey: "e5e525c75274a0cd954ec98993d606c2"
+    },
     // "browser": browserDetect()
   };
 
@@ -20,14 +22,13 @@ $(()=> {
   // }
 
   app.callApi = (section, node, limit = 100, filter = "", order = "-modified")=> {
-    var pubKey = "e5e525c75274a0cd954ec98993d606c2",
-        limitAjax = "&limit=" + limit,
+    var limitAjax = "&limit=" + limit,
         url = "https://gateway.marvel.com:443/v1/public/",
         orderAjax = "?orderBy=" + order,
         urlAjax = url + section + orderAjax + limitAjax;
 
     $.getJSON(urlAjax, {
-      apikey: pubKey
+      apikey: app.api.pubKey
     })
     .done((data)=> {
       console.log(data.data.results);
@@ -40,13 +41,16 @@ $(()=> {
     var template = "";
     for (var i = 0; i < arrayContent.length; i++) {
       if(arrayContent[i].thumbnail.path.indexOf("image_not_available") < 0) {
-        template += `<li ui-url="${arrayContent[i].resourceURI}">
+        template += `<li><a href="${arrayContent[i].resourceURI + app.api.pubKey}">
                     <img src="${arrayContent[i].thumbnail.path}.${arrayContent[i].thumbnail.extension}">
                     <h3>${arrayContent[i].name}</h3>
-                    </li>`
+                    </a></li>`
       }
     }
     $(node).append(template);
+    $(node + " li").on("click", (e)=> {
+      console.log(e.currentTarget);
+    });
   }
 
   app.callApi("characters", "#gridHome");
