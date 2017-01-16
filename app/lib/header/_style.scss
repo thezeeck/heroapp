@@ -1,0 +1,31 @@
+header {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
+  .logo,
+  .sub-logo {
+    display: inline-block;
+    margin: 16px 32px;
+    line-height: 0;
+
+    img {
+      max-height: 70px;
+    }
+  }
+
+  .sub-logo {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 8px;
+      background-color: #E92227;
+      height: 84px;
+      left: -38px;
+      top: -8px;
+      transform: skew(-10deg);
+    }
+  }
+}

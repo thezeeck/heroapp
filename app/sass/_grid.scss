@@ -7,12 +7,24 @@
   justify-content: space-around;
 
   li {
-    flex: 1 25%;
+    flex: 1 100%;
     margin: 0 0 32px;
     line-height: 0;
     position: relative;
     overflow: hidden;
     text-align: center;
+    @media screen and (min-width: $col-2) {
+      flex: 1 50%;
+    }
+    @media screen and (min-width: $col-3) {
+      flex: 1 33.33%;
+    }
+    @media screen and (min-width: $col-4) {
+      flex: 1 25%;
+    }
+    @media screen and (min-width: $col-5) {
+      flex: 1 20%;
+    }
 
     .card {
       overflow: hidden;

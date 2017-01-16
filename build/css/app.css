@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  background-image: url("../img/bg-pattern.png");
   font-family: 'Open Sans', sans-serif;
   font-size: 2vh; }
   body * {
@@ -14,12 +13,24 @@ body {
   flex-flow: row wrap;
   justify-content: space-around; }
   #gridHome li {
-    flex: 1 25%;
+    flex: 1 100%;
     margin: 0 0 32px;
     line-height: 0;
     position: relative;
     overflow: hidden;
     text-align: center; }
+    @media screen and (min-width: 620px) {
+      #gridHome li {
+        flex: 1 50%; } }
+    @media screen and (min-width: 920px) {
+      #gridHome li {
+        flex: 1 33.33%; } }
+    @media screen and (min-width: 1240px) {
+      #gridHome li {
+        flex: 1 25%; } }
+    @media screen and (min-width: 1561px) {
+      #gridHome li {
+        flex: 1 20%; } }
     #gridHome li .card {
       overflow: hidden;
       max-width: 300px;
@@ -39,3 +50,27 @@ body {
         font-weight: bold;
         color: #fff;
         text-shadow: 0 0 10px #000; }
+
+header {
+  position: absolute;
+  width: 100%;
+  z-index: 1; }
+  header .logo,
+  header .sub-logo {
+    display: inline-block;
+    margin: 16px 32px;
+    line-height: 0; }
+    header .logo img,
+    header .sub-logo img {
+      max-height: 70px; }
+  header .sub-logo {
+    position: relative; }
+    header .sub-logo::before {
+      content: "";
+      position: absolute;
+      width: 8px;
+      background-color: #E92227;
+      height: 84px;
+      left: -38px;
+      top: -8px;
+      transform: skew(-10deg); }
