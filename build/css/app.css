@@ -52,11 +52,17 @@ body {
         text-shadow: 0 0 10px #000; }
 
 header {
-  position: absolute;
+  position: fixed;
   width: 100%;
   z-index: 1; }
   header .brand {
-    display: inline-block; }
+    display: inline-block;
+    width: 100%;
+    text-align: center; }
+    @media screen and (min-width: 920px) {
+      header .brand {
+        width: auto;
+        text-align: left; } }
     header .brand .logo,
     header .brand .sub-logo {
       display: inline-block;
