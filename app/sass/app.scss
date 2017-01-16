@@ -10,6 +10,13 @@ body {
   * {
     box-sizing: border-box;
   }
+
+  &:not(.mobile-ver) {
+
+    .mobile {
+      display: none;
+    }
+  }
 }
 
 @import "grid";
