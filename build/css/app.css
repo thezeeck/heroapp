@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  background-image: url("../img/bg-pattern.png");
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2vh; }
+  body * {
+    box-sizing: border-box; }
+
+#gridHome {
+  list-style: none;
+  padding: 70px 32px 32px;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  #gridHome li {
+    flex: 1 0 0;
+    width: 300px;
+    min-width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    line-height: 0;
+    position: relative;
+    overflow: hidden; }
+    #gridHome li img {
+      width: 100%;
+      min-width: 300px; }
+    #gridHome li h3 {
+      margin: 0;
+      position: absolute;
+      bottom: 16px;
+      line-height: 16px;
+      font-size: 16px;
+      right: 16px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 10px #000; }

@@ -1,8 +1,23 @@
 $(()=> {
 
   var app = {
-    "api": {}
+    "api": {},
+    // "browser": browserDetect()
   };
+
+  // function browserDetect() {
+  //   var obj = {};
+  //
+  //   obj.userAgent = navigator.userAgent.toLowerCase();
+  //   obj.eventDevice = obj.userAgent.match(/(iphone|ipod|ipad)/)  ? "touchstart" : "click";
+  //   obj.mobileVer = $("body").innerWidth() < 900 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;
+  //
+  //   if (app.browser.mobileVer) {
+  //     $("body").addClass("mobile-ver");
+  //   }
+  //
+  //   return obj;
+  // }
 
   app.callApi = (section, node, limit = 100, filter = "", order = "-modified")=> {
     var pubKey = "e5e525c75274a0cd954ec98993d606c2",
@@ -11,14 +26,14 @@ $(()=> {
         orderAjax = "?orderBy=" + order,
         urlAjax = url + section + orderAjax + limitAjax;
 
-        $.getJSON(urlAjax, {
-          apikey: pubKey
-        })
-        .done((data)=> {
-          console.log(data.data.results);
-          app.renderGrid(data.data.results, node);
-        })
-        .fail((err)=> console.log(err));
+    $.getJSON(urlAjax, {
+      apikey: pubKey
+    })
+    .done((data)=> {
+      console.log(data.data.results);
+      app.renderGrid(data.data.results, node);
+    })
+    .fail((err)=> console.log(err));
   }
 
   app.renderGrid = (arrayContent, node)=> {

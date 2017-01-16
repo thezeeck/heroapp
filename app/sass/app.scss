@@ -1,0 +1,14 @@
+body {
+  //background-color: $secondary-color-light;
+  margin: 0;
+  background-image: url('../img/bg-pattern.png');
+  //color: $secondary-color-dark;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2vh;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@import "../lib/header/style";

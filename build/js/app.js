@@ -6,6 +6,20 @@ $(function () {
     "api": {}
   };
 
+  // function browserDetect() {
+  //   var obj = {};
+  //
+  //   obj.userAgent = navigator.userAgent.toLowerCase();
+  //   obj.eventDevice = obj.userAgent.match(/(iphone|ipod|ipad)/)  ? "touchstart" : "click";
+  //   obj.mobileVer = $("body").innerWidth() < 900 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;
+  //
+  //   if (app.browser.mobileVer) {
+  //     $("body").addClass("mobile-ver");
+  //   }
+  //
+  //   return obj;
+  // }
+
   app.callApi = function (section, node) {
     var limit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 100;
     var filter = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "";
