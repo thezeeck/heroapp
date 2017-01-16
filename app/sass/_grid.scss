@@ -1,35 +1,32 @@
-body {
-  margin: 0;
-  background-image: url("../img/bg-pattern.png");
-  font-family: 'Open Sans', sans-serif;
-  font-size: 2vh; }
-  body * {
-    box-sizing: border-box; }
-
 #gridHome {
   list-style: none;
   padding: 32px 0 16px;
   margin: 0;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around; }
-  #gridHome li {
+  justify-content: space-around;
+
+  li {
     flex: 1 25%;
     margin: 0 0 32px;
     line-height: 0;
     position: relative;
     overflow: hidden;
-    text-align: center; }
-    #gridHome li .card {
+    text-align: center;
+
+    .card {
       overflow: hidden;
       max-width: 300px;
       position: relative;
       margin: 0 auto;
       cursor: pointer;
-      max-height: 300px; }
-      #gridHome li .card img {
-        width: 100%; }
-      #gridHome li .card h3 {
+      max-height: 300px;
+
+      img {
+        width: 100%;
+      }
+
+      h3 {
         margin: 0;
         position: absolute;
         bottom: 16px;
@@ -38,4 +35,8 @@ body {
         right: 16px;
         font-weight: bold;
         color: #fff;
-        text-shadow: 0 0 10px #000; }
+        text-shadow: 0 0 10px #000;
+      }
+    }
+  }
+}

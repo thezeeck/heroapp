@@ -46,7 +46,7 @@ $(function () {
     var template = "";
     for (var i = 0; i < arrayContent.length; i++) {
       if (arrayContent[i].thumbnail.path.indexOf("image_not_available") < 0) {
-        template += "<li><a href=\"" + (arrayContent[i].resourceURI + app.api.pubKey) + "\">\n                    <img src=\"" + arrayContent[i].thumbnail.path + "." + arrayContent[i].thumbnail.extension + "\">\n                    <h3>" + arrayContent[i].name + "</h3>\n                    </a></li>";
+        template += "<li ui-ref=\"" + (arrayContent[i].resourceURI + app.api.pubKey) + "\"><div class=\"card\">\n                    <img src=\"" + arrayContent[i].thumbnail.path + "." + arrayContent[i].thumbnail.extension + "\">\n                    <h3>" + arrayContent[i].name + "</h3></div></li>";
       }
     }
     $(node).append(template);
