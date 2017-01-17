@@ -64,6 +64,10 @@ header {
 
       i {
         font-size: 20px;
+
+        &.fa-times {
+          display: none;
+        }
       }
     }
   }
@@ -121,6 +125,17 @@ header {
 
         &::before {
           background-color: #fff;
+        }
+      }
+
+      button {
+
+        i.fa-times {
+          display: inline-block;
+        }
+
+        i.fa-search {
+          display: none;
         }
       }
     }

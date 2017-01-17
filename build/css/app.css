@@ -111,6 +111,8 @@ header {
       cursor: pointer; }
       header .brand button i {
         font-size: 20px; }
+        header .brand button i.fa-times {
+          display: none; }
   header form {
     display: block;
     height: 0px;
@@ -147,3 +149,7 @@ header {
     background-color: #E92227; }
     header.active .brand .sub-logo::before {
       background-color: #fff; }
+    header.active .brand button i.fa-times {
+      display: inline-block; }
+    header.active .brand button i.fa-search {
+      display: none; }
