@@ -47,40 +47,55 @@ $(function () {
 
   app.renderGrid = function (arrayContent, node) {
     console.log(arrayContent);
-    var template = "";
+    var template = "",
+        rejected = 0;
     for (var i = 0; i < arrayContent.length; i++) {
       if (arrayContent[i].thumbnail.path.indexOf("image_not_available") < 0) {
         template += "<li ui-ref=\"" + (arrayContent[i].resourceURI + app.api.pubKey) + "\"><div class=\"card\">\n                    <img src=\"" + arrayContent[i].thumbnail.path + "." + arrayContent[i].thumbnail.extension + "\">\n                    <h3>" + arrayContent[i].name + "</h3></div></li>";
+      } else {
+        rejected++;
       }
     }
-    $(node).append(template);
-    $(node + " li").on("click", function (e) {
-      console.log(e.currentTarget);
-    });
+    if (rejected < arrayContent.length) {
+      $(node).html(template);
+      $(node + " li").on("click", function (e) {
+        console.log(e.currentTarget);
+      });
+    } else {
+      $(node).html('<h1 class="empty-search">No pudimos encontrar nada</h1>');
+    }
   };
 
   function searchOptions() {
-    if (app.browser.mobileVer) {
-      $("#serchToggle").on(app.browser.eventDevice, function () {
+
+    $("#serchToggle").on(app.browser.eventDevice, function () {
+      if ($("#search").hasClass("active")) {
         $("#search").toggleClass("active");
         $("header").toggleClass("active");
-      });
-    } else {
-      $("#serchToggle").on(app.browser.eventDevice, function () {
+        $("#search input")[0].value = "";
+        runGrid();
+      } else {
+        $("#search").toggleClass("active");
         $("header").toggleClass("active");
-      });
-    }
+      }
+    });
 
     $("#search").submit(function (e) {
       e.preventDefault();
+      app.callApi("characters", [["nameStartsWith", $("#search input")[0].value], ["orderBy", "-modified"], ["limit", 100]]).then(function (returndata) {
+        return app.renderGrid(returndata, "#gridHome");
+      });
+    });
+  }
+
+  function runGrid() {
+    app.callApi("characters", [["orderBy", "-modified"], ["limit", 100]]).then(function (returndata) {
+      return app.renderGrid(returndata, "#gridHome");
     });
   }
 
   function runApp() {
-    app.callApi("characters", [["orderBy", "-modified"], ["limit", 100]]).then(function (returndata) {
-      app.renderGrid(returndata, "#gridHome");
-    });
-
+    runGrid();
     searchOptions();
   }
 

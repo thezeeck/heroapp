@@ -1,4 +1,9 @@
 $principal: #E92227;
+$principal-dark: darken($principal, 10%);
+$principal-light: lighten($principal, 30%);
+
+$secondary-color-light: #F6F6F6;
+$secondary-color-dark: #5E727F;
 
 $col-2: 620px;
 $col-3: 920px;

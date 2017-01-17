@@ -41,6 +41,7 @@ header {
         width: 8px;
         background-color: #E92227;
         height: 64px;
+        transition: all .3s ease;
         @media screen and (min-width: $col-3) {
           height: 84px;
         }
@@ -93,6 +94,13 @@ header {
       font-size: 18px;
       padding: 1px 8px;
       border-radius: 5px 0 0 5px;
+
+      &::selection {
+        background: $principal-dark;
+      }
+      &::-moz-selection {
+        background: $principal-dark;
+      }
     }
 
     button {

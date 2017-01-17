@@ -1,15 +1,21 @@
 body {
+  background-color: #F6F6F6;
   margin: 0;
+  color: #5E727F;
   font-family: 'Open Sans', sans-serif;
   font-size: 2vh; }
   body * {
     box-sizing: border-box; }
+    body *::selection {
+      background: #f7adaf; }
+    body *::-moz-selection {
+      background: #f7adaf; }
   body:not(.mobile-ver) .mobile {
     display: none; }
 
 #gridHome {
   list-style: none;
-  padding: 32px 0 16px;
+  padding: 86px 0 16px;
   margin: 0;
   display: flex;
   flex-flow: row wrap;
@@ -52,6 +58,8 @@ body {
         font-weight: bold;
         color: #fff;
         text-shadow: 0 0 10px #000; }
+  #gridHome .empty-search {
+    margin-top: 50px; }
 
 header {
   position: fixed;
@@ -92,6 +100,7 @@ header {
         width: 8px;
         background-color: #E92227;
         height: 64px;
+        transition: all .3s ease;
         left: -22px;
         top: -8px;
         transform: skew(-10deg); }
@@ -131,6 +140,10 @@ header {
       font-size: 18px;
       padding: 1px 8px;
       border-radius: 5px 0 0 5px; }
+      header form input::selection {
+        background: #c41418; }
+      header form input::-moz-selection {
+        background: #c41418; }
     header form button {
       color: #fff;
       font-size: 18px;
