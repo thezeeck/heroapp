@@ -1,0 +1,10 @@
+#detail {
+  width: 0px;
+  transform: translate(100%, 0px);
+  overflow: hidden;
+  padding: 86px 0 16px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  transition: all .3s ease;
+}

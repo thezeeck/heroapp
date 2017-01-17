@@ -19,7 +19,8 @@ body {
   margin: 0;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around; }
+  justify-content: space-around;
+  transition: all .3s ease; }
   #gridHome li {
     flex: 1 100%;
     margin: 0 0 32px;
@@ -59,14 +60,29 @@ body {
         color: #fff;
         text-shadow: 0 0 10px #000; }
   #gridHome .empty-search {
-    margin-top: 50px; }
+    margin-top: 50px;
+    font-size: 30px;
+    text-align: center;
+    padding: 0 32px; }
+
+#detail {
+  width: 0px;
+  transform: translate(100%, 0px);
+  overflow: hidden;
+  padding: 86px 0 16px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  transition: all .3s ease; }
 
 header {
   position: fixed;
   width: 100%;
   z-index: 1;
   background-color: transparent;
-  transition: all .3s ease; }
+  transition: all .3s ease;
+  top: 0;
+  left: 0; }
   header .brand {
     display: inline-block;
     width: 100%;
@@ -166,3 +182,6 @@ header {
       display: inline-block; }
     header.active .brand button i.fa-search {
       display: none; }
+    header.active + .containers #gridHome,
+    header.active + .containers #detail {
+      margin-top: 75px; }

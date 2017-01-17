@@ -4,6 +4,8 @@ header {
   z-index: 1;
   background-color: transparent;
   transition: all .3s ease;
+  top: 0;
+  left: 0;
 
   .brand {
     display: inline-block;
@@ -146,6 +148,11 @@ header {
           display: none;
         }
       }
+    }
+
+    & + .containers #gridHome,
+    & + .containers #detail {
+      margin-top: 75px;
     }
   }
 }

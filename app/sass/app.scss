@@ -26,5 +26,6 @@ body {
   }
 }
 
-@import "grid";
+@import "../lib/containers/grid";
+@import "../lib/containers/detail";
 @import "../lib/header/style";
