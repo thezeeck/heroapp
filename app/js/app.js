@@ -22,7 +22,7 @@ function browserDetect() {
 $(()=> {
 
   function runApp() {
-    runGrid();
+    app.runGrid("characters", [["orderBy", "-modified"], ["limit", 100]], "#gridHome");
     searchOptions();
   }
 

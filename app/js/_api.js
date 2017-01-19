@@ -1,5 +1,5 @@
-app.callApi = (section, parameters)=> {
-  var urlAjax = "https://gateway.marvel.com:443/v1/public/" + section;
+app.callApi = (path, parameters)=> {
+  var urlAjax = path.indexOf < 0 ? path : "https://gateway.marvel.com:443/v1/public/" + path;
 
   for (var i = 0; i < parameters.length; i++) {
     if (i) {

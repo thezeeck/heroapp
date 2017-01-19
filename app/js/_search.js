@@ -5,7 +5,7 @@ function searchOptions() {
       $("#search").toggleClass("active");
       $("header").toggleClass("active");
       $("#search input")[0].value = "";
-      runGrid();
+      app.runGrid("characters", [["orderBy", "-modified"], ["limit", 100]], "#gridHome");
     } else {
       $("#search").toggleClass("active");
       $("header").toggleClass("active");

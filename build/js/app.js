@@ -24,7 +24,7 @@ function browserDetect() {
 $(function () {
 
   function runApp() {
-    runGrid();
+    app.runGrid("characters", [["orderBy", "-modified"], ["limit", 100]], "#gridHome");
     searchOptions();
   }
 
@@ -32,8 +32,8 @@ $(function () {
 });
 "use strict";
 
-app.callApi = function (section, parameters) {
-  var urlAjax = "https://gateway.marvel.com:443/v1/public/" + section;
+app.callApi = function (path, parameters) {
+  var urlAjax = path.indexOf < 0 ? path : "https://gateway.marvel.com:443/v1/public/" + path;
 
   for (var i = 0; i < parameters.length; i++) {
     if (i) {
@@ -61,7 +61,11 @@ app.renderGrid = function (arrayContent, node) {
       rejected = 0;
   for (var i = 0; i < arrayContent.length; i++) {
     if (arrayContent[i].thumbnail.path.indexOf("image_not_available") < 0) {
-      template += "<li ui-ref=\"" + (arrayContent[i].resourceURI + app.api.pubKey) + "\"><div class=\"card\">\n                  <img src=\"" + arrayContent[i].thumbnail.path + "." + arrayContent[i].thumbnail.extension + "\">\n                  <h3>" + arrayContent[i].name + "</h3></div></li>";
+      if (node === "#detail") {
+        template += "<div class=\"detail\">\n                    <img src=\"" + arrayContent[i].thumbnail.path + "." + arrayContent[i].thumbnail.extension + "\">\n                    <h3>" + arrayContent[i].name + "</h3>\n                    <h4>Series</h4>\n                    <ul></ul>\n                    </div>";
+      } else {
+        template += "<li ui-ref=\"" + arrayContent[i].id + "\"><div class=\"card\">\n                    <img src=\"" + arrayContent[i].thumbnail.path + "." + arrayContent[i].thumbnail.extension + "\">\n                    <h3>" + arrayContent[i].name + "</h3></div></li>";
+      }
     } else {
       rejected++;
     }
@@ -70,17 +74,18 @@ app.renderGrid = function (arrayContent, node) {
     $(node).html(template);
     $(node + " li").on("click", function (e) {
       console.log(e.currentTarget);
+      app.runGrid("characters/" + $(e.currentTarget).attr("ui-ref"), [], "#detail");
     });
   } else {
     $(node).html('<h1 class="empty-search">No pudimos encontrar nada</h1>');
   }
 };
 
-function runGrid() {
-  app.callApi("characters", [["orderBy", "-modified"], ["limit", 100]]).then(function (returndata) {
-    return app.renderGrid(returndata, "#gridHome");
+app.runGrid = function (url, parameters, node) {
+  app.callApi(url, parameters).then(function (returndata) {
+    return app.renderGrid(returndata, node);
   });
-}
+};
 "use strict";
 
 function searchOptions() {
@@ -90,7 +95,7 @@ function searchOptions() {
       $("#search").toggleClass("active");
       $("header").toggleClass("active");
       $("#search input")[0].value = "";
-      runGrid();
+      app.runGrid("characters", [["orderBy", "-modified"], ["limit", 100]], "#gridHome");
     } else {
       $("#search").toggleClass("active");
       $("header").toggleClass("active");
